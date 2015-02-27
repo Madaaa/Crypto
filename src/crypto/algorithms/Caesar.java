@@ -13,9 +13,7 @@ public class Caesar {
         for (int i = 0; i < text.length; i++) {
             character = text[i];
             character = (char) (character - shift);
-            if (character > 'z') {
-                character = (char) (character - 26);
-            } else if (character < 'a') {
+            if (character < 'a') {
                 character = (char) (character + 26);
             }
             text[i] = character;
@@ -32,8 +30,6 @@ public class Caesar {
             character = (char) (character + shift);
             if (character > 'z') {
                 character = (char) (character - 26);
-            } else if (character < 'a') {
-                character = (char) (character + 26);
             }
             text[i] = character;
         }

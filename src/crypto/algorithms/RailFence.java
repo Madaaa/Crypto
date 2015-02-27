@@ -6,11 +6,11 @@ package crypto.algorithms;
  */
 public class RailFence {
 
-    String Encryption(String plainText, int rails) throws Exception {
-        int r = rails;
-        int length = plainText.length();
-        int c = length / rails;
-        char mat[][] = new char[r][c];
+    String encryption(String text, int lines) throws Exception {
+        int r = lines;
+        int length = text.length();
+        int c = length / lines;
+        char m[][] = new char[r][c];
         int index = 0;
 
         String cipherText = "";
@@ -18,42 +18,42 @@ public class RailFence {
         for (int i = 0; i < c; i++) {
             for (int j = 0; j < r; j++) {
                 if (index != length)
-                    mat[j][i] = plainText.charAt(index ++);
+                    m[j][i] = text.charAt(index ++);
                 else
-                    mat[j][i] =  '-';
+                    m[j][i] =  '-';
             }
         }
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                if (mat[i][j] != '-')
-                    cipherText += mat[i][j];
+                if (m[i][j] != '-')
+                    cipherText += m[i][j];
             }
         }
         return cipherText;
     }
 
 
-    String Decryption(String cipherText, int rails) throws Exception {
-        int r = rails;
+    String decryption(String cipherText, int lines) throws Exception {
+        int r = lines;
         int length = cipherText.length();
-        int c = length / rails;
-        char mat[][] = new char[r][c];
+        int c = length / lines;
+        char m[][] = new char[r][c];
         int index = 0;
 
-        String plainText = "";
+        String text = "";
 
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                mat[i][j] = cipherText.charAt(index ++);
+                m[i][j] = cipherText.charAt(index ++);
             }
         }
         for (int i = 0; i < c; i++) {
             for (int j = 0; j < r; j++) {
-                plainText += mat[j][i];
+                text += m[j][i];
             }
         }
 
-        return plainText;
+        return text;
     }
 }
 
